@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  
+}
+
+body{
+    background: url(/img/clod.jpg);
+    font-family: 'Poppins', sans-serif;
+    background-size: cover;
+
+}
+form{
+    height: 60vh;
+    border-radius: 20px;
+    /* margin-top: 100px !important; */
+    width: 104% !important;
+    background-color: white !important;
+    padding: 300px;
+}
+
+.btn-primary{
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(90deg, rgb(73, 71, 120) 0%, rgb(147, 114, 191) 35%, rgb(90, 180, 198) 100%);
+    
+}
+
+.form-control{
+    color: rgba(0,0,0,.87);
+    border-bottom-color: rgba(0,0,0,.42);
+    box-shadow: none !important;
+    border: none;
+    border-bottom: 1px solid;
+    border-radius: 4px 4px 0 0;
+    }
+ h4{
+    font-size: 2rem !important;
+    font-weight: 1000;
+ }  
+ .form-label{
+    font-weight: 800 !important;
+ }
+ button{
+    margin-top: 20px;
+ }
+@media only screen and (max-width: 600px) {
+    form {
+        width: 100% !important;
+    }
+  }
