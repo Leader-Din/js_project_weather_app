@@ -16,7 +16,11 @@
 
 body {
     min-height: 100vh;
-    background-color: var(--bg-color1);
+    /* background-color: var(--bg-color1); */
+    background-image: url(../imgs/banner1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
     padding: 0 15px;
@@ -122,13 +126,18 @@ body {
     /* margin-left: 5px; */
 }
 
-
+a {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.5s;
+    /* background-color: #fff; */
+}
 
 
 .card {
     background-color: var(--bg-color2);
     padding: 15px;
-    border-radius: 15px;
+    border-radius: 0px;
     margin-bottom: 15px;
 
     & p {
