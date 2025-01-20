@@ -9,6 +9,9 @@ body {
     height: 100vh;
     margin: 0;
 }
+
+/* form container */
+
 .form-container {
     padding: 20px;
     border-radius: 10px;

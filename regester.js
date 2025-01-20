@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+    // variable
     const formContainer = document.getElementById('formContainer');
 
     const form = document.createElement('form');
