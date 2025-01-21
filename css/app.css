@@ -1,6 +1,6 @@
 :root {
     --bg-color1: #4d6174;
-    --bg-color2: #2a2d2d;
+    --bg-color2: #3e4141;
     --aqi-1: #d4e157;
     --aqi-2: #ffee58;
     --aqi-3: #ffca28;
@@ -137,7 +137,7 @@ a {
 .card {
     background-color: var(--bg-color2);
     padding: 15px;
-    border-radius: 0px;
+    border-radius: 10px;
     margin-bottom: 15px;
 
     & p {

@@ -25,14 +25,13 @@ checkbox.addEventListener("change", () => {
       // Debugging: Log when the checkbox is checked
       console.log("Switching to dark mode");
 
-      // Switch to dark mode with correct image path
-      document.querySelector("body").style.backgroundImage = "url('images/banner.jpg')";
-  } else {
-      // Debugging: Log when the checkbox is unchecked
+      document.querySelector("body").style.backgroundImage = "url('../imgs/banner.jpg')";
+      document.querySelector("#head").style.color = "white";
+      document.querySelector("#head1").style.color = "white";
+  }else {
+    // Debugging: Log when the checkbox is unchecked
       console.log("Switching to light mode");
-
-      // Switch back to light mode with correct image path
-      document.querySelector("body").style.backgroundImage = "url('images/banner1.jpg')";
+      document.querySelector("body").style.backgroundImage = "url('../imgs/banner1.jpg')";
   }
 });
 
