@@ -16,7 +16,7 @@ const pressureVal = document.getElementById("pressureVal");
 const visibilityVal = document.getElementById("visibilityVal");
 const windSpeedVal = document.getElementById("windSpeedVal");
 const feelVal = document.getElementById("fellVal");
-const hourlyForecastContainer = document.querySelector(".hourly-forecast");  // Fixed typo
+const hourlyForecastContainer = document.querySelector(".hourly-forecast"); 
 
 const checkbox = document.getElementById("checkbox");
 
