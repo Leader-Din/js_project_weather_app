@@ -1,6 +1,5 @@
-<<<<<<< HEAD
+// <<<<<<< HEAD
 // variables
-=======
 // Function to toggle password visibility
 function viewPassword() {
   const passwordField = document.querySelector('#exampleInputPassword1');
@@ -51,4 +50,4 @@ verifyCodeForm.addEventListener('submit', function (e) {
       alert('An error occurred. Please try again.');
   });
 });
->>>>>>> 713109659937ad8013da6e409ac6bf2fcbe20513
+// >>>>>>> 713109659937ad8013da6e409ac6bf2fcbe20513

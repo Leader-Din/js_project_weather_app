@@ -1,11 +1,12 @@
 
+
+// get element from html
 const cityInput = document.getElementById("city-input");
 const searchBtn = document.getElementById("searchBtn");
 const locationBtn = document.getElementById("locationBtn");
 
 const api_key = "ad51411d878e2c56f89b16bbc868eb6d";
 
-// Elements
 const currentWeatherCard = document.querySelector(".weather-left .card");
 const sevenDaysForecastContainer = document.querySelector(".day-forecast");
 const aqiCard = document.querySelector(".hightlights .card");
@@ -15,7 +16,24 @@ const pressureVal = document.getElementById("pressureVal");
 const visibilityVal = document.getElementById("visibilityVal");
 const windSpeedVal = document.getElementById("windSpeedVal");
 const feelVal = document.getElementById("fellVal");
-const hourlyForecastContainer = document.querySelector(".hourly-forecast");  // Fixed typo
+const hourlyForecastContainer = document.querySelector(".hourly-forecast"); 
+
+const checkbox = document.getElementById("checkbox");
+
+checkbox.addEventListener("change", () => {
+  if (checkbox.checked) {
+      // Debugging: Log when the checkbox is checked
+      console.log("Switching to dark mode");
+
+      document.querySelector("body").style.backgroundImage = "url('../imgs/banner.jpg')";
+      document.querySelector("#head").style.color = "white";
+      document.querySelector("#head1").style.color = "white";
+  }else {
+    // Debugging: Log when the checkbox is unchecked
+      console.log("Switching to light mode");
+      document.querySelector("body").style.backgroundImage = "url('../imgs/banner1.jpg')";
+  }
+});
 
 // Air Quality Index Descriptions
 const aqiList = ["Good", "Fair", "Moderate", "Poor", "Very Poor"];
@@ -75,9 +93,12 @@ function getWeatherDetails(cityName, lat, lon, country, state) {
         const tempInCelsius = (temp - 273.15).toFixed(2);
         const feelsLikeInCelsius = (feels_like - 273.15).toFixed(2);
 
-        // Format Sunrise and Sunset Time
-        const sunriseTime = new Date((sunrise + timezone) * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-        const sunsetTime = new Date((sunset + timezone) * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+       // Define the Cambodia time offset
+const cambodiaTimeOffset = 7 * 60 * 60 * 1000; // UTC +7 in milliseconds
+
+// Format Sunrise and Sunset Time
+const sunriseTime = new Date((sunrise + timezone * 1000) * 1000 + cambodiaTimeOffset).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+const sunsetTime = new Date((sunset + timezone * 1000) * 1000 + cambodiaTimeOffset).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 
         // Update the current weather card
         currentWeatherCard.innerHTML = `
