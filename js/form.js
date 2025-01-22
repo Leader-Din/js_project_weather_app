@@ -1,32 +1,51 @@
+// Import the necessary functions from Firebase SDK
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-database.js";
 
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
-  import { getDatabase , ref , set ,get , child } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-database.js";
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDvWdj1qmlaHz6jHEHfGXXSDjg4JGfBSvQ",
+  authDomain: "weather-52bdf.firebaseapp.com",
+  databaseURL: "https://weather-52bdf-default-rtdb.firebaseio.com",
+  projectId: "weather-52bdf",
+  storageBucket: "weather-52bdf.firebasestorage.app",
+  messagingSenderId: "1024336697765",
+  appId: "1:1024336697765:web:b1303ab8aba26b103d304c",
+};
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyAMYlm9uAuCea-rBQHgZMBmbBD47De5_Xs",
-    authDomain: "weather-f7836.firebaseapp.com",
-    projectId: "weather-f7836",
-    storageBucket: "weather-f7836.firebasestorage.app",
-    messagingSenderId: "256132267970",
-    appId: "1:256132267970:web:09443229d1a692979da05b"
-  };
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
-  const app = initializeApp(firebaseConfig);
+// Submit form data
+document.getElementById("submit").addEventListener("click", function (e) {
+  e.preventDefault(); // Prevent default form submission
 
-//get ref to database services
- const db = getDatabase(app);
+  // Get user input values
+  const username = document.getElementById("username").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
 
- document.getElementById("submit").addEventListener('click', function(e){
-  e.preventDefault();
-  set(ref(db, 'user/' + document.getElementById("username").value),
-  {
+  // Validate inputs
+  if (!username || !email || !phone) {
+    alert("All fields are required.");
+    return;
+  }
 
-    username: document.getElementById("username").value,
-    email: document.getElementById("email").value,
-    PhoneNumber: document.getElementById("phone").value
+  // Save data to Firebase Realtime Database
+  set(ref(db, "user/" + username), { username, email, phoneNumber: phone })
+    .then(() => {
+      alert("Data saved successfully!");
 
-  });
-    alert("Login Sucessfull  !");
- })
+      // Optionally clear form fields after successful submission
+      document.getElementById("username").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("phone").value = "";
+    })
+    .catch((error) => {
+      console.error("Error saving data:", error);
+      alert("Failed to save data. Please try again.");
+    });
+});
+
+console.log("Form initialized and ready to submit data.");
