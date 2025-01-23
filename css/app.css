@@ -424,8 +424,11 @@ a {
         height: 150px;
     }
 
-    .hightlights, .card, .card-head {
-        width: 104%;
+    .weather-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 10px;
     }
     
 }
