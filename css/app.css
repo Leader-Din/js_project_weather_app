@@ -142,30 +142,32 @@ a {
 
     & p {
         font-size: 14px;
-        color: #999;
+        color: #fff;
     }
 
     & h2 {
         font-size: 32px;
         font-weight: 500;
+        margin-left: 50px;
     }
 }
+
 
 .weather-data {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 10px;
 
     & .weather-left {
-        grid-column: span 1;
-
+        grid-column: span 4;
         & .current-weather {
             display: flex;
             justify-content: space-between;
             align-items: center;
 
             & h2 {
-                margin: 7px 0;
+                margin: 10px 0;
+                font-size: 54px;
             }
 
             & p {
@@ -173,8 +175,15 @@ a {
             }
         }
 
+        & .weather-icon img {
+            width: 200px;
+            height: 200px;
+            color: #fff;
+        }
+
         & .card-footer p {
-            font-size: 14px;
+            font-size: 18px;
+            color: white;
             margin-bottom: 12px;
             margin-top: 10px;
         }
@@ -193,7 +202,7 @@ a {
     }
 
     & .weather-right {
-        grid-column: span 3;
+        grid-column: span 4;
         & h2 {
             margin-bottom: 10px;
         }
@@ -213,27 +222,27 @@ a {
                 margin-bottom: 10px;
 
                 & .air-index {
-                    color: #000;
+                    color: #fff;
                     padding: 5px 10px;
                     border-radius: 15px;
                     & .aqi-1 {
-                        background-color: var(--aqi-1);
+                        background-color: #d4e157;
                     }
 
                     & .aqi-2 {
-                        background-color: var(--aqi-2);
+                        background-color: #ffee58;
                     }
 
                     & .aqi-3 {
-                        background-color: var(--aqi-3);
+                        background-color: #ffca28;
                     }
 
                     & .aqi-4 {
-                        background-color: var(--aqi-4);
+                        background-color: #ffca28;
                     }
 
                     & .aqi-5 {
-                        background-color: var(--aqi-5);
+                        background-color: #ff7043;
                     }
                 }
             }

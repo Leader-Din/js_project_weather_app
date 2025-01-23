@@ -61,7 +61,7 @@ function getWeatherDetails(cityName, lat, lon, country, state) {
         <div class="card-head">
           <p>Air Quality Index</p>
           <p class="air-index aqi-${aqiIndex}" id="api-1">${aqiList[aqiIndex - 1]}</p>
-        </div> 
+        </div>
         <div class="air-indices">
           <div class="item"><p>PM2.5</p><p>${pm2_5}</p></div>
           <div class="item"><p>PM10</p><p>${pm10}</p></div>
