@@ -136,7 +136,7 @@ a {
 
 .card {
     background-color: var(--bg-color2);
-    padding: 15px;
+    padding: 25px;
     border-radius: 10px;
     margin-bottom: 15px;
 
@@ -406,9 +406,28 @@ a {
 }
 
 @media (max-width: 480px) {
-    .weather-data .weather-right .hightlights .sunrise-sunset {
+    .weather-data .weather-right .hightlights .sunrise-sunset .forecast-item  {
         grid-template-columns: 1fr;
+        
     }
+
+    .card {
+        width: 100%;
+    }
+
+    .card .current-weather .details h2 {
+        font-size: 40px;
+    }
+
+    .card .current-weather  .weather-icon img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .hightlights, .card, .card-head {
+        width: 104%;
+    }
+    
 }
 
 @media (max-width: 450px) {
