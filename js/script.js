@@ -1,5 +1,3 @@
-
-
 // get element from html
 const cityInput = document.getElementById("city-input");
 const searchBtn = document.getElementById("searchBtn");
@@ -93,12 +91,12 @@ function getWeatherDetails(cityName, lat, lon, country, state) {
         const tempInCelsius = (temp - 273.15).toFixed(2);
         const feelsLikeInCelsius = (feels_like - 273.15).toFixed(2);
 
-       // Define the Cambodia time offset
-const cambodiaTimeOffset = 7 * 60 * 60 * 1000; // UTC +7 in milliseconds
+        // Define the Cambodia time offset
+        const cambodiaTimeOffset = 7 * 60 * 60 * 1000; // UTC +7 in milliseconds
 
-// Format Sunrise and Sunset Time
-const sunriseTime = new Date((sunrise + timezone * 1000) * 1000 + cambodiaTimeOffset).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-const sunsetTime = new Date((sunset + timezone * 1000) * 1000 + cambodiaTimeOffset).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+        // Format Sunrise and Sunset Time
+        const sunriseTime = new Date((sunrise + timezone) * 1000 + cambodiaTimeOffset).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+        const sunsetTime = new Date((sunset + timezone) * 1000 + cambodiaTimeOffset).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 
         // Update the current weather card
         currentWeatherCard.innerHTML = `
@@ -149,22 +147,22 @@ const sunsetTime = new Date((sunset + timezone * 1000) * 1000 + cambodiaTimeOffs
     .then((data) => {
       sevenDaysForecastContainer.innerHTML = ""; // Clear existing forecast
 
-      // Group data by full date (including day and month)
+      // Group data by day
       const groupedByDay = {};
       data.list.forEach((forecast) => {
         const date = new Date(forecast.dt * 1000);
-        const fullDate = date.toDateString();  // Use the full date for grouping
-        if (!groupedByDay[fullDate]) {
-          groupedByDay[fullDate] = [];
+        const day = date.getDate();
+        if (!groupedByDay[day]) {
+          groupedByDay[day] = [];
         }
-        groupedByDay[fullDate].push(forecast);
+        groupedByDay[day].push(forecast);
       });
 
       // Now, display the 7-day forecast
       let count = 0; // To ensure you only show 7 days
-      Object.keys(groupedByDay).forEach((fullDate) => {
+      Object.keys(groupedByDay).forEach((day) => {
         if (count >= 7) return;  // Only display 7 days
-        const dayForecasts = groupedByDay[fullDate];
+        const dayForecasts = groupedByDay[day];
         const dayTemp = (dayForecasts[0].main.temp - 273.15).toFixed(2); // Average or pick first temp
         const dayIcon = dayForecasts[0].weather[0].icon;
         const date = new Date(dayForecasts[0].dt * 1000);
@@ -177,7 +175,7 @@ const sunsetTime = new Date((sunset + timezone * 1000) * 1000 + cambodiaTimeOffs
               <span>${dayTemp}&deg;C</span>
             </div>
             <p>${dayName}</p>
-            <p>${fullDate}</p> <!-- This shows the full date (day, month, year) -->
+            <p>${date.getDate()} ${months[date.getMonth()]}</p> <!-- This shows the day and month -->
           </div>
         `;
 
@@ -189,7 +187,7 @@ const sunsetTime = new Date((sunset + timezone * 1000) * 1000 + cambodiaTimeOffs
 
       hourlyForecastContainer.innerHTML = ""; // Ensure this is cleared before appending new items
 
-      const hourlyForecast = data.list.filter((item, index) => index % 4 === 0); // Example condition to display hourly data every 4 hours
+      const hourlyForecast = data.list.filter((item, index) => index % 3 === 0); // Example condition to display hourly data every 3 hours
       hourlyForecast.forEach((hour) => {
         const hourDate = new Date(hour.dt * 1000);
         const hourTemp = (hour.main.temp - 273.15).toFixed(2);
@@ -365,7 +363,7 @@ function loadStoredData() {
             <span>${dayTemp}&deg;C</span>
           </div>
           <p>${dayName}</p>
-          <p>${fullDate}</p>
+          <p>${date.getDate()} ${months[date.getMonth()]}</p>
         </div>
       `;
 
@@ -438,3 +436,12 @@ window.onload = function () {
       alert("Geolocation is not supported by your browser.");
   }
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+    const burgerMenu = document.getElementById('burgerMenu');
+    const header = document.querySelector('.header');
+
+    burgerMenu.addEventListener('click', () => {
+        header.classList.toggle('active');
+    });
+});

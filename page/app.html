@@ -18,16 +18,20 @@
 
     <div class="container">
         <div class="header">
-            <h2 id="logo">Weather App</h2>
-
+            <div id="logo">
+                Weather App
+                <div class="burger-menu" id="burgerMenu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
             <div class="weather-input">
                 <input type="text" name="city" id="city-input" placeholder="Enter city name...">
                 <button type="button" id="searchBtn">
-                    <i class="fa-solid fa-search"></i>Search
+                    <i class="fa-solid fa-search"></i>
                 </button>
 
                 <button type="button" id="locationBtn">
-                    <i class="bx bx-target-lock"></i>Current Location
+                    <i class="bx bx-target-lock"></i>
                 </button>
 
             </div>
@@ -49,95 +53,98 @@
 
         <div class="weather-data">
             <div class="weather-left">
-                <div class="card">
-                    <div class="current-weather">
-                        <div class="details">
-                            <p>Now</p>
-                            <h2>_____&deg;C</h2>
-                            <p>___</p>
+                <div class="container">
+                    <div class="card">
+                        <div class="current-weather">
+                            <div class="details">
+                                <p>Now</p>
+                                <h2>_____&deg;C</h2>
+                                <p>___</p>
+                            </div>
+    
+                            <div class="weather-icon">
+                                <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="">
+                            </div>
                         </div>
-
-                        <div class="weather-icon">
-                            <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="">
+                        <hr>
+                        <div class="card-footer">
+                            <p> <i class="far fa-calendar"></i>_____</p>
+                            <p> <i class="fas fa-location-dot"></i>_____</p>
                         </div>
                     </div>
-                    <hr>
-                    <div class="card-footer">
-                        <p> <i class="far fa-calendar"></i>_____</p>
-                        <p> <i class="fas fa-location-dot"></i>_____</p>
-                    </div>
+    
+                    <div class="card">
+                        <h2>7 days forecast</h2>
+                        <div class="day-forecast">
+    
+                            <div class="forecast-item">
+                                <div class="icon-wrapper">
+                                    <img src="https://openweathermap.org/img/wn/02d.png" alt="">
+                                    <span>___&deg;C</span>
+                                </div>
+                                <p>___</p>
+                                <p>___</p>
+                            </div>
+    
+                            <div class="forecast-item">
+                                <div class="icon-wrapper">
+                                    <img src="https://openweathermap.org/img/wn/02d.png" alt="">
+                                    <span>___&deg;C</span>
+                                </div>
+                                <p>___</p>
+                                <p>___</p>
+                            </div>
+    
+                            <div class="forecast-item">
+                                <div class="icon-wrapper">
+                                    <img src="https://openweathermap.org/img/wn/02d.png" alt="">
+                                    <span>___&deg;C</span>
+                                </div>
+                                <p>___</p>
+                                <p>___</p>
+                            </div>
+    
+                            <div class="forecast-item">
+                                <div class="icon-wrapper">
+                                    <img src="https://openweathermap.org/img/wn/02d.png" alt="">
+                                    <span>___&deg;C</span>
+                                </div>
+                                <p>___</p>
+                                <p>___</p>
+                            </div>
+    
+                            <div class="forecast-item">
+                                <div class="icon-wrapper">
+                                    <img src="https://openweathermap.org/img/wn/02d.png" alt="">
+                                    <span>___&deg;C</span>
+                                </div>
+                                <p>___</p>
+                                <p>___</p>
+                            </div>
+    
+                            <div class="forecast-item">
+                                <div class="icon-wrapper">
+                                    <img src="https://openweathermap.org/img/wn/02d.png" alt="">
+                                    <span>___&deg;C</span>
+                                </div>
+                                <p>___</p>
+                                <p>___</p>
+                            </div>
+    
+                            <div class="forecast-item">
+                                <div class="icon-wrapper">
+                                    <img src="https://openweathermap.org/img/wn/02d.png" alt="">
+                                    <span>___&deg;C</span>
+                                </div>
+                                <p>___</p>
+                                <p>___</p>
+                            </div>
+    
+                            
+    
+                        </div>
                 </div>
-
-                <div class="card">
-                    <h2>7 days forecast</h2>
-                    <div class="day-forecast">
-
-                        <div class="forecast-item">
-                            <div class="icon-wrapper">
-                                <img src="https://openweathermap.org/img/wn/02d.png" alt="">
-                                <span>___&deg;C</span>
-                            </div>
-                            <p>___</p>
-                            <p>___</p>
-                        </div>
-
-                        <div class="forecast-item">
-                            <div class="icon-wrapper">
-                                <img src="https://openweathermap.org/img/wn/02d.png" alt="">
-                                <span>___&deg;C</span>
-                            </div>
-                            <p>___</p>
-                            <p>___</p>
-                        </div>
-
-                        <div class="forecast-item">
-                            <div class="icon-wrapper">
-                                <img src="https://openweathermap.org/img/wn/02d.png" alt="">
-                                <span>___&deg;C</span>
-                            </div>
-                            <p>___</p>
-                            <p>___</p>
-                        </div>
-
-                        <div class="forecast-item">
-                            <div class="icon-wrapper">
-                                <img src="https://openweathermap.org/img/wn/02d.png" alt="">
-                                <span>___&deg;C</span>
-                            </div>
-                            <p>___</p>
-                            <p>___</p>
-                        </div>
-
-                        <div class="forecast-item">
-                            <div class="icon-wrapper">
-                                <img src="https://openweathermap.org/img/wn/02d.png" alt="">
-                                <span>___&deg;C</span>
-                            </div>
-                            <p>___</p>
-                            <p>___</p>
-                        </div>
-
-                        <div class="forecast-item">
-                            <div class="icon-wrapper">
-                                <img src="https://openweathermap.org/img/wn/02d.png" alt="">
-                                <span>___&deg;C</span>
-                            </div>
-                            <p>___</p>
-                            <p>___</p>
-                        </div>
-
-                        <div class="forecast-item">
-                            <div class="icon-wrapper">
-                                <img src="https://openweathermap.org/img/wn/02d.png" alt="">
-                                <span>___&deg;C</span>
-                            </div>
-                            <p>___</p>
-                            <p>___</p>
-                        </div>
-
-                        
-
-                    </div>
+                
                 </div>
             </div>
 
