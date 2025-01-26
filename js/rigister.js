@@ -105,7 +105,7 @@ function getWeatherDetails(cityName, lat, lon, country, state) {
             // Store air pollution data in localStorage
             localStorage.setItem('airPollution', JSON.stringify(data));
         })
-        .catch(() => alert("Failed to fetch air pollution data!"));
+        .catch(() => alert(""));
 
     // Fetch Current Weather Data
     fetch(WEATHER_API_URL)
