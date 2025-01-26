@@ -455,3 +455,67 @@ document.addEventListener('DOMContentLoaded', () => {
     profile.classList.toggle('active'); // Toggle profile visibility
   });
 });
+
+const citySuggestions = document.getElementById("city-suggestions");
+
+cityInput.addEventListener("input", () => {
+  const query = cityInput.value.trim();
+  console.log("Input query:", query); // Debugging: Log the input query
+  if (query.length > 0) {
+    citySuggestions.style.display = "block"; // Show suggestions
+    fetchCitySuggestions(query);
+  } else {
+    citySuggestions.style.display = "none"; // Hide suggestions
+  }
+});
+
+function fetchCitySuggestions(query) {
+  const GEO_API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=10&appid=${api_key}`;
+  console.log("Fetching city suggestions from:", GEO_API_URL); // Debugging: Log the API URL
+
+  fetch(GEO_API_URL)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("City suggestions data:", data); // Debugging: Log the fetched data
+      citySuggestions.innerHTML = "";
+      if (data.length === 0) {
+        citySuggestions.innerHTML += "<div class='suggestion-item'>No city suggestions found</div>";
+      } else {
+        // Separate cities in Cambodia and other cities
+        const cambodiaCities = data.filter(city => city.country === "KH");
+        const otherCities = data.filter(city => city.country !== "KH");
+
+        // Display cities in Cambodia first
+        cambodiaCities.forEach((city) => {
+          const suggestionItem = document.createElement("div");
+          suggestionItem.classList.add("suggestion-item");
+          suggestionItem.textContent = `${city.name}, ${city.country}`;
+          suggestionItem.addEventListener("click", () => {
+            cityInput.value = city.name;
+            citySuggestions.innerHTML = "";
+            citySuggestions.style.display = "none"; // Hide suggestions
+            getWeatherDetails(city.name, city.lat, city.lon, city.country, city.state);
+          });
+          citySuggestions.appendChild(suggestionItem);
+        });
+
+        // Display other cities
+        otherCities.forEach((city) => {
+          const suggestionItem = document.createElement("div");
+          suggestionItem.classList.add("suggestion-item");
+          suggestionItem.textContent = `${city.name}, ${city.country}`;
+          suggestionItem.addEventListener("click", () => {
+            cityInput.value = city.name;
+            citySuggestions.innerHTML = "";
+            citySuggestions.style.display = "none"; // Hide suggestions
+            getWeatherDetails(city.name, city.lat, city.lon, city.country, city.state);
+          });
+          citySuggestions.appendChild(suggestionItem);
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching city suggestions:", error); // Debugging: Log any errors
+      citySuggestions.innerHTML += "<div class='suggestion-item'>No city suggestions found</div>";
+    });
+}
