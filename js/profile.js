@@ -15,9 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const profileFields = [
                 { label: 'First Name', value: userData.firstName, id: 'firstName' },
                 { label: 'Last Name', value: userData.lastName, id: 'lastName' },
-                { label: 'Username', value: userData.username, id: 'username' },
-                { label: 'Email', value: userData.email, id: 'email' },
-                { label: 'Phone Number', value: userData.phoneNumber, id: 'phoneNumber' }
+                { label: 'Email', value: userData.email, id: 'email' }
             ];
 
             profileFields.forEach(field => {
@@ -66,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     saveChangesButton.addEventListener('click', () => {
-        const fieldsToUpdate = ['firstName', 'lastName', 'username', 'email', 'phoneNumber'];
+        const fieldsToUpdate = ['firstName', 'lastName', 'email'];
         fieldsToUpdate.forEach(fieldId => {
             const inputElement = document.getElementById(`edit-${fieldId}`);
             if (inputElement) {
