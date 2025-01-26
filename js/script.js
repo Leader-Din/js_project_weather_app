@@ -444,8 +444,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const burgerMenu = document.getElementById('burgerMenu');
   const header = document.querySelector('.header');
+  const weatherInput = document.querySelector('.weather-input');
+  const toggle = document.querySelector('.toggle');
+  const profile = document.querySelector('.profile');
 
   burgerMenu.addEventListener('click', () => {
     header.classList.toggle('active');
+    weatherInput.classList.toggle('active');
+    toggle.classList.toggle('active');
+    profile.classList.toggle('active'); // Toggle profile visibility
   });
 });
