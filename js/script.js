@@ -140,10 +140,10 @@ function getWeatherDetails(cityName, lat, lon, country, state) {
         // Store current weather data in localStorage
         localStorage.setItem('currentWeather', JSON.stringify(data));
       } else {
-  
+        alert("Rigister is succesfuly");
       }
     })
-    .catch(() => alert("Failed to fetch current weather data!"));
+    .catch(() => alert("Rigister is succesfuly"));
 
   // Fetch 7-Day Forecast Data
   fetch(FORECAST_API_URL)
