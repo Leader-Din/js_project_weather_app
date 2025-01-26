@@ -35,17 +35,16 @@
                 </button>
 
             </div>
+            <div class="profile">
+                <a href="profile.html">
+                    <img src="../img/profile.png" alt="User Icon" style="width: 49px; height: 49px; margin-right: 10px; margin-left: 10px;">
+                </a>
+            </div>
             <div class="toggle">
-                <!-- <a href="login.html"><i class="fa-solid fa-user"></i></a>
-                
-                <i class="fa-solid fa-bookmark"></i> -->
-                
                 <input type="checkbox" class="checkbox" id="checkbox">
                 <label for="checkbox" class="checkbox-label">
-                    
                     <i class="fas fa-moon"></i>
                     <i class="fas fa-sun"></i>
-                    
                     <span class="ball"></span>
                 </label>
             </div>
@@ -340,6 +339,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            checkUserRegistration(); // Check if user is registered before loading the weather app
+        });
+    </script>
 
 </body>
 

@@ -44,6 +44,13 @@ const months = [
   "September", "October", "November", "December",
 ];
 
+function checkUserRegistration() {
+  const userData = JSON.parse(localStorage.getItem('userData'));
+  if (!userData) {
+    window.location.href = 'register.html';
+  }
+}
+
 function getWeatherDetails(cityName, lat, lon, country, state) {
   const FORECAST_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}`;
   const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`;
@@ -85,18 +92,15 @@ function getWeatherDetails(cityName, lat, lon, country, state) {
         const { speed } = data.wind;
         const { description, icon } = data.weather[0];
         const { sunrise, sunset } = data.sys;
-        const { timezone, visibility } = data;
+        const { visibility } = data;
 
         // Convert Temperature to Celsius
         const tempInCelsius = (temp - 273.15).toFixed(2);
         const feelsLikeInCelsius = (feels_like - 273.15).toFixed(2);
 
-        // Define the Cambodia time offset
-        const cambodiaTimeOffset = 7 * 60 * 60 * 1000; // UTC +7 in milliseconds
-
-        // Format Sunrise and Sunset Time
-        const sunriseTime = new Date((sunrise + timezone) * 1000 + cambodiaTimeOffset).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-        const sunsetTime = new Date((sunset + timezone) * 1000 + cambodiaTimeOffset).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+        // Format Sunrise and Sunset Time in Cambodia time
+        const sunriseTime = new Date((sunrise * 1000)).toLocaleTimeString('en-US', { timeZone: 'Asia/Phnom_Penh', hour: '2-digit', minute: '2-digit', hour12: true });
+        const sunsetTime = new Date((sunset * 1000)).toLocaleTimeString('en-US', { timeZone: 'Asia/Phnom_Penh', hour: '2-digit', minute: '2-digit', hour12: true });
 
         // Update the current weather card
         currentWeatherCard.innerHTML = `
@@ -176,8 +180,7 @@ function getWeatherDetails(cityName, lat, lon, country, state) {
             </div>
             <p>${dayName}</p>
             <p>${date.getDate()} ${months[date.getMonth()]}</p> <!-- This shows the day and month -->
-          </div>
-        `;
+          </div>`;
 
         count++; // Increment day count
       });
@@ -198,8 +201,7 @@ function getWeatherDetails(cityName, lat, lon, country, state) {
             <p>${hourTime}</p>
             <img src="https://openweathermap.org/img/wn/${hour.weather[0].icon}.png" alt="Weather icon">
             <p>${hourTemp}&deg;C</p>
-          </div>
-        `;
+          </div>`;
       });
     })
     .catch(() => alert("Failed to fetch forecast data!"));
@@ -271,9 +273,9 @@ function loadStoredData() {
     const tempInCelsius = (temp - 273.15).toFixed(2);
     const feelsLikeInCelsius = (feels_like - 273.15).toFixed(2);
 
-    // Format Sunrise and Sunset Time
-    const sunriseTime = new Date(sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const sunsetTime = new Date(sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    // Format Sunrise and Sunset Time in Cambodia time
+    const sunriseTime = new Date((sunrise * 1000)).toLocaleTimeString([], { timeZone: 'Asia/Phnom_Penh', hour: '2-digit', minute: '2-digit' });
+    const sunsetTime = new Date((sunset * 1000)).toLocaleTimeString([], { timeZone: 'Asia/Phnom_Penh', hour: '2-digit', minute: '2-digit' });
 
     // Update the current weather card
     currentWeatherCard.innerHTML = `
@@ -438,10 +440,12 @@ window.onload = function () {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    const burgerMenu = document.getElementById('burgerMenu');
-    const header = document.querySelector('.header');
+  checkUserRegistration(); // Check if user is registered before loading the weather app
 
-    burgerMenu.addEventListener('click', () => {
-        header.classList.toggle('active');
-    });
+  const burgerMenu = document.getElementById('burgerMenu');
+  const header = document.querySelector('.header');
+
+  burgerMenu.addEventListener('click', () => {
+    header.classList.toggle('active');
+  });
 });
